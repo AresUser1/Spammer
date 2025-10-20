@@ -3,9 +3,9 @@
 <manifest>
 {
   "name": "Spammer",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "SynForge",
-  "source": "https://raw.githubusercontent.com/AresUser1/Spammer/refs/heads/main/spam.py",
+  "source": "https://raw.githubusercontent.com/AresUser1/Spammer/main/spam.py",
   "channel_url": "https://t.me/SynForge",
   "dependencies": []
 }
