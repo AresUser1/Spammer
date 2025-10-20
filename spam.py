@@ -3,9 +3,9 @@
 <manifest>
 {
   "name": "Spammer",
-  "version": "1.0",
+  "version": "1.0.0",
   "author": "SynForge",
-  "source": "https://<ссылка_на_твой_github>/raw/main/modules/spam.py",
+  "source": "https://raw.githubusercontent.com/AresUser1/Spammer/refs/heads/main/spam.py",
   "channel_url": "https://t.me/SynForge",
   "dependencies": []
 }
@@ -26,13 +26,12 @@ from telethon.tl.types import MessageEntityBold, MessageEntityCode, MessageEntit
 from core import register
 from utils.message_builder import build_and_edit, build_message
 
-# --- ПРЕМИУМ ЭМОДЗИ (замените ID на ваши, полученные через .getid) ---
-ROCKET_EMOJI_ID = 5445284980978621387   # Пример 🚀
-SUCCESS_EMOJI_ID = 5776375003280838798  # Пример ✅
-ERROR_EMOJI_ID = 5778527486270770928    # Пример ❌
-INFO_EMOJI_ID = 5879785854284599288     # Пример ℹ️
 
-# Глобальная переменная для хранения активной задачи спама.
+ROCKET_EMOJI_ID = 5445284980978621387   # 🚀
+SUCCESS_EMOJI_ID = 5776375003280838798  # ✅
+ERROR_EMOJI_ID = 5778527486270770928    # ❌
+INFO_EMOJI_ID = 5879785854284599288     # ℹ️
+
 SPAM_TASK = None
 
 @register("spam")
@@ -106,7 +105,6 @@ async def spam_cmd(event):
     ]
     text, entities = build_message(confirm_parts)
     await event.client.send_message(event.chat_id, text, formatting_entities=entities)
-
 
 @register("stopspam")
 async def stopspam_cmd(event):
