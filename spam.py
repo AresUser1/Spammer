@@ -3,7 +3,7 @@
 <manifest>
 {
   "name": "Spammer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "SynForge",
   "source": "https://raw.githubusercontent.com/AresUser1/Spammer/refs/heads/main/spam.py",
   "channel_url": "https://t.me/SynForge",
@@ -66,7 +66,13 @@ async def spam_cmd(event):
     if event.message.entities:
         for entity in event.message.entities:
             if entity.offset >= command_prefix_len:
-                new_entity = entity.copy()
+                
+                # --- ИЗМЕНЕНО: НАЧАЛО БЛОКА ---
+                # Вместо .copy() мы создаем новый объект того же класса,
+                # передавая ему все атрибуты старого. Это универсальное решение.
+                new_entity = type(entity)(**entity.to_dict())
+                # --- ИЗМЕНЕНО: КОНЕЦ БЛОКА ---
+
                 new_entity.offset -= command_prefix_len
                 entities.append(new_entity)
     
@@ -103,8 +109,8 @@ async def spam_cmd(event):
         {"text": "Количество: ", "entity": MessageEntityBold},
         {"text": str(count), "entity": MessageEntityCode}
     ]
-    text, entities = build_message(confirm_parts)
-    await event.client.send_message(event.chat_id, text, formatting_entities=entities)
+    text, entities_built = build_message(confirm_parts) # Переименовал, чтобы не было конфликта
+    await event.client.send_message(event.chat_id, text, formatting_entities=entities_built)
 
 @register("stopspam")
 async def stopspam_cmd(event):
