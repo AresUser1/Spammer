@@ -2,7 +2,7 @@
 """
 <manifest>
 name: Spammer
-version: 1.1.5
+version: 1.1.6
 author: SynForge
 source: https://raw.githubusercontent.com/AresUser1/Spammer/main/spam.py
 channel_url: https://t.me/SynForge
@@ -124,4 +124,3 @@ async def stopspam_cmd(event):
 
     SPAM_TASK.cancel()
     await event.delete()
-}
